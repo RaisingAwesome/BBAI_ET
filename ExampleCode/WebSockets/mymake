@@ -1,0 +1,4 @@
+#sudo g++ -ow wally.cpp
+sudo g++ -c -o SSLClient.o wally.cpp
+sudo g++ -o w SSLClient.o -lssl -lcrypto
+sudo cp w ../w
