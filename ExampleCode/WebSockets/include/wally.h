@@ -118,7 +118,7 @@ void Wally::writeStatusToFile() {
 	PrettyWriter<StringBuffer> writer(sb);
 	d.Accept(writer);
 
-	myfile.open("/home/pi/wally.json");
+	myfile.open("/home/debian/wally.json");
 	myfile << sb.GetString();
 	myfile.close();
 	if (DEBUG) cout << "Wrote file" << endl;
@@ -126,7 +126,7 @@ void Wally::writeStatusToFile() {
 string Wally::readWallyFile() {
 	ifstream myfile;
 	string output = "";
-	myfile.open("/home/pi/wally.json");
+	myfile.open("/home/debian/wally.json");
 	if (myfile.is_open())
 	{
 		string line;
@@ -210,7 +210,7 @@ Wally::Wally() {
 		"\"alarm\":\"set\","
 		"\"weather\":\"The weather is not yet set.  \"}";
 
-	string name = "/home/pi/wally.json";
+	string name = "/home/debian/wally.json";
 
 	ifstream f(name.c_str());
 	if (!f.good()) {
