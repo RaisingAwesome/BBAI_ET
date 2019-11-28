@@ -100,7 +100,7 @@ void ListenForSocketConnection() {
 	listen(sockfd, 5);
 
 	clilen = sizeof(cli_addr);
-
+	if (DEBUG) cout<<"About to monitor port"<<endl;
 	while (1) {
 		newsockfd = accept(sockfd,
 			(struct sockaddr *) &cli_addr, &clilen);
@@ -123,6 +123,7 @@ void ListenForSocketConnection() {
 			system("sudo systemctl restart pagekite");
 			exit(0);
 		}
+		
 		else {
 			close(newsockfd);
 			wait(&pid);
@@ -521,7 +522,7 @@ void SetNestThermostat(string thermostat, string body) {
 void UpdateEnvironmentalAwareness() {
 	if (DEBUG) cout << "Updating environmental awareness" << endl;
 	SetWallyWeather();
-	SetWallyNest();
+	//SetWallyNest();
 	wally.save();
 }
 void error(const char *msg) {
