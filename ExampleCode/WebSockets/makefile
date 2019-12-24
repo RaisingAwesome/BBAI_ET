@@ -4,8 +4,11 @@ all: w
 w: wally.o
 	g++ -o w wally.o -lssl -lcrypto
 
-wally.o: wally.cpp
+wally.o: wally.cpp include/wally.h
 	sudo g++ -c wally.cpp
+
+wally.h:
+	ls include/wally.h
 
 clean: 
 	rm w wally.o

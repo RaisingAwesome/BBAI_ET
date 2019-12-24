@@ -104,6 +104,7 @@ void ListenForSocketConnection() {
 	while (1) {
 		newsockfd = accept(sockfd,
 			(struct sockaddr *) &cli_addr, &clilen);
+		if (DEBUG) cout<<"Got a hit"<<endl;
 		if (newsockfd < 0)
 			error("ERROR on accept");
 		pid = fork();
@@ -165,12 +166,12 @@ void HandleAlexa(string str, int sock) {
 	if (DEBUG) cout << "Getting intent" << endl;
 	string intent = AlexaJSON["request"]["intent"]["name"].GetString();
 	if (DEBUG) cout << intent << endl;
-
-	str = AlexaResponseJSON("Not Yet Coded", "Wally said that Sean has not yet coded him to do that.");
+	UpdateEnvironmentalAwareness();
+	str = AlexaResponseJSON("House Status", GetHouseStatus());
 
 	if (intent.compare("CheckStatus") == 0) {
 		UpdateEnvironmentalAwareness();
-		str = AlexaResponseJSON("House Status", GetHouseStatus());
+		//str = AlexaResponseJSON("House Status", GetHouseStatus());
 		write(sock, str.c_str(), str.length());
 	}
 	else if (intent.compare("CheckOnWally") == 0) {
@@ -467,6 +468,7 @@ void SetWallyWeather() {
 	Document weather = GetWeatherJSON();
 	if (DEBUG) cout << "About to set hourly summary" << endl;
 	string my_weather(weather["hourly"]["summary"].GetString());
+	
 	string sprinkler = "  Since it is going to rain, I've turned off the sprinklers.  ";
 	string new_weather; locale loc;
 	for (std::string::size_type i = 0; i<my_weather.length(); ++i)
@@ -475,7 +477,7 @@ void SetWallyWeather() {
 	if (new_weather.find("RAIN") == string::npos) {
 		sprinkler = "  Since there is no rain in the forecast, I've turned on the sprinklers.  ";
 	}
-	my_weather += sprinkler;
+	//my_weather += sprinkler;
 	wally.setWeather(my_weather.c_str());
 	
 	wally.setWindSpeed(weather["currently"]["windGust"].GetDouble());

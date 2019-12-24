@@ -165,31 +165,34 @@ string Wally::getHouseSummary()
 	string response = "Here is Wallys house status report.  "
 		"The outside temperature from dark sky is " + to_string((int)(d["temperatureOutside"].GetDouble() + .5)) + " degrees Fahrenheit.  "
 
-		"The upstairs temperature is " + to_string((int)(d["temperatureUpstairs"].GetDouble()+.5)) +
-		"  .  "
+//		"The upstairs temperature is " + to_string((int)(d["temperatureUpstairs"].GetDouble()+.5)) +
+//		"  .  "
 
-		"The upstairs humidity is " + to_string((int)(d["humidityUpstairs"].GetDouble()+.5)) + ".  "
+//		"The upstairs humidity is " + to_string((int)(d["humidityUpstairs"].GetDouble()+.5)) + ".  "
 
-		"The HVAC mode upstairs is set to " + d["upstairsHVACMode"].GetString() + ".  "
+//		"The HVAC mode upstairs is set to " + d["upstairsHVACMode"].GetString() + ".  "
 
-		"The downstairs temperature is " + to_string((int)(d["temperatureDownstairs"].GetDouble()+.5)) +
-		" degrees Fahrenheit.  "
+//		"The downstairs temperature is " + to_string((int)(d["temperatureDownstairs"].GetDouble()+.5)) +
+//		" degrees Fahrenheit.  "
 
-		"The downstairs humidity is " + to_string((int)(d["humidityDownstairs"].GetDouble()+.5)) + ". "
+//		"The downstairs humidity is " + to_string((int)(d["humidityDownstairs"].GetDouble()+.5)) + ". "
 
-		"The HVAC mode downstairs is set to " + d["downstairsHVACMode"].GetString() + ".  " +
+//		"The HVAC mode downstairs is set to " + d["downstairsHVACMode"].GetString() + ".  " +
 
-		d["backDoor"].GetString() +
+//		d["backDoor"].GetString() +
 
-		d["frontDoor"].GetString() +
+//		d["frontDoor"].GetString() +
 
-		d["garageDoor"].GetString() +
+//		d["garageDoor"].GetString() +
 
-		d["humidifier"].GetString() +
+//		d["humidifier"].GetString() +
+//
+//		d["sprinklers"].GetString() +
 
-		d["sprinklers"].GetString() +
-
-		"Here is the forecast: " + d["weather"].GetString();
+		"with " + d["weather"].GetString() + ". Doo-doo cat has become so matted up, he has taken the shape of a ball of yarn and rolls from food dish to food dish.  Connor stayed up playing video games until the sun began to rise.  His plan was to sleep away the day so 6:00 would come quicker.  Mom suckered dad into cleaning the kitchen by first giving him coffee and then later bragging on how well he dances like John Travolta.  Dad can't want until 6:00 so he spent all morning programming this Alexa response in hopes to pass time quickly, too.  Merry Christmas and Happy Konnakah.";
+		
+		
+	//string response ="";
 	return(response);
 }
 Wally::Wally() {
